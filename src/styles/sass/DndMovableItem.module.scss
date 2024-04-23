@@ -1,0 +1,38 @@
+.card {
+  height: 300px;
+  .header {
+    display: flex;
+    padding: 3px 4px;
+    background: #e5e4e2;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+    cursor: grab;
+    .grabHandle {
+      content: '....';
+      line-height: 5px;
+      padding: 3px 4px;
+      margin-top: -0.5em;
+      font-size: 12px;
+      font-family: sans-serif;
+      letter-spacing: 2px;
+      color: #cccccc;
+      text-shadow: 1px 0 1px black;
+    }
+    .grabHandle::after {
+      display: inline-block;
+      width: 16px;
+      content: '.. .. ..';
+    }
+    .titleText {
+      max-width: 80%;
+      font-size: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .close {
+      padding: 0 6px;
+      cursor: pointer;
+    }
+  }
+}

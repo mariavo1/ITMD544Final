@@ -1,0 +1,28 @@
+.card {
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  &.selected {
+    border: 5px solid #f022c0;
+  }
+  .flexContainer {
+    display: flex;
+    flex-direction: column;
+    .flexChild {
+      padding: 8px 0;
+      white-space: nowrap;
+      .icon {
+        font-size: 1.5rem;
+      }
+      .tempRange {
+        > div {
+          display: inline;
+          padding: 0 5%;
+        }
+        .lo {
+          color: #9aa0a6;
+        }
+      }
+    }
+  }
+}

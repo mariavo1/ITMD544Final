@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String            @id @default(cuid())
+  email     String            @unique
+  name      String?
+  createdAt DateTime          @default(now()) @map("created_at")
+  updatedAt DateTime          @updatedAt @map("updated_at")
+  password  String            @db.VarChar
+  role      Role              @default(USER)
+  locations LocationsOnUser[]
+
+  @@map("users")
+}
+
+model Location {
+  id        String            @id @default(cuid())
+  label     String            @unique
+  latitude  Decimal           @db.Decimal(5, 2)
+  longitude Decimal           @db.Decimal(5, 2)
+  users     LocationsOnUser[]
+
+  @@map("locations")
+}
+
+model LocationsOnUser {
+  userId        String
+  locationId    String
+  isUserDefault Boolean  @default(false)
+  displayOrder  Int
+  assignedAt    DateTime @default(now())
+  location      Location @relation(fields: [locationId], references: [id])
+  user          User     @relation(fields: [userId], references: [id])
+
+  @@id([userId, locationId])
+  @@map("locations_on_user")
+}
+
+enum Role {
+  USER
+  ADMIN
+}

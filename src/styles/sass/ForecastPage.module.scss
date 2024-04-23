@@ -1,0 +1,19 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  .child {
+    padding: 2rem;
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    button {
+      float: right;
+      white-space: nowrap;
+      background: #f23ac9;
+      border: white;
+    }
+  }
+}
